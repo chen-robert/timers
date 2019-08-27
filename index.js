@@ -4,7 +4,6 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const autoprefixer = require('express-autoprefixer');
 const lessMiddleware = require('less-middleware');
-const cookieSession = require("cookie-session");
 
 const PORT = process.env.PORT || 3000;
 
