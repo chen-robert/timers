@@ -2,7 +2,78 @@
   background-color: #357ae8;
   color: white;
   padding: 10px;
-  font-family: 'Roboto',arial,sans-serif;
   font-size: 12px;
   font-weight: bold;
+}
+
+body{
+  font-family: 'Roboto',arial,sans-serif;
+}
+
+.timers-list {
+  display: flex;
+  padding: 15px;
+
+  flex-wrap: wrap;
+}
+
+.timer {
+  display: flex;
+  width: 100%;
+  align-items: center;
+
+  font-size: 3em;
+}
+
+.timer__tag {
+  font-size: 1em;
+  margin: 0 10px;
+}
+
+.time__number {
+  font-size: 1em;
+}
+
+.time__letter {
+  font-size: .5em;
+}
+
+.timer__seperator {
+  flex: 1;
+}
+
+.playbtn {
+  border: 0;
+  background: transparent;
+  box-sizing: border-box;
+  width: 0;
+  height: 74px;
+  transform: scale(.5);
+
+  border-color: transparent transparent transparent #202020;
+  transition: 100ms all ease;
+  cursor: pointer;
+
+  // play state
+  border-style: solid;
+  border-width: 37px 0 37px 60px;
+
+  &.paused {
+    border-style: double;
+    border-width: 0px 0 0px 60px;
+  }
+
+  &:hover {
+    border-color: transparent transparent transparent #606060;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.playbtn-wrapper {
+  height: 50px;
+  display: flex;
+  align-items: center;
 }
