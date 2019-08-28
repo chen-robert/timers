@@ -1,8 +1,27 @@
 <html>
   <head>
     <link rel="stylesheet" href="/styles/main.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   </head>
   <body>
-    <button>Add</button>
+    <button class="btn" id="add">Add</button>
+    <input id="name">
+    <div class="timers-list" id="timers">
+      <div class="timer">
+          <div class="timer__tag">
+            Awer
+          </div>
+          <div class="timer__timer">
+            <span>10</span>s
+          </div>
+      </div>
+    </div>
+    <script>
+      $("#add").click(() => {
+        const tag = $("#name").val();
+
+        console.log(tag);
+      });
+    </script>
   </body>
 </html>
