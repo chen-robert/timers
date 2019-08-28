@@ -7,12 +7,17 @@
   <body>
     <input id="name" autocomplete="off">
     <div class="timers-list" id="timers"></div>
+    <input id="data" style="display:none;" data-username="<%= username %>">
     <script>
+      const username = $("#data").data("username");
       const data = {};
       const state = {};
 
       const init = name => {
         if(Object.keys(state).includes(name)) return;
+
+        $.post(`/api/${username}/${name}`)
+          .then(() => console.log(`Saved ${name}`));
 
         data[name] = [];
         state[name] = {
