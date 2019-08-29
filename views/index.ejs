@@ -144,8 +144,14 @@
           times
             .sort((a, b) => a.time - b.time)
             .forEach(({opt, time}) => {
-              if(opt === "pause") currState.time += time - currState.last;
-              else if(opt === "play") currState.last = time;
+              if(opt === "pause") {
+                currState.time += time - currState.last;
+                currState.playing = false; 
+              }
+              else if(opt === "play") {
+                currState.last = time;
+                currState.playing = true;
+              }
             });
 
           state[tag] = currState;
