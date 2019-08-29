@@ -31,11 +31,11 @@ module.exports = {
 
     return res.rows;
   },
-  getTimes: async (name, tag) => {
+  getTimes: async (name, tag, lim) => {
     const res = await client.query(`
       SELECT opt, time FROM pauses
-      WHERE parent_name = $1 AND parent_tag = $2
-    `, [name, tag]);
+      WHERE parent_name = $1 AND parent_tag = $2 AND time > $3
+    `, [name, tag, lim]);
 
     return res.rows;
   },

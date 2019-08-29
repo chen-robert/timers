@@ -26,7 +26,7 @@ app.get("/api/:name", async (req, res) => {
 });
 
 app.get("/api/:name/:tag", async (req, res) => {
-  const times = await getTimes(req.params.name, req.params.tag);
+  const times = await getTimes(req.params.name, req.params.tag, req.query.lim || 0);
 
   res.send(times);
 })
