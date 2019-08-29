@@ -15,13 +15,13 @@ module.exports = {
       ($1, $2, $3, $4)
     `, [opt, time, user, tag])
   },
-  addTag: async (user, tag) => {
+  addTag: async (name, tag) => {
     await client.query(`
       INSERT INTO events
       (name, tag)
       VALUES
       ($1, $2)
-    `, [user, tag]);
+    `, [name, tag]);
   },
   getTags: async user => {
     const res = await client.query(`
@@ -30,5 +30,23 @@ module.exports = {
     `, [user]);
 
     return res.rows;
+  },
+  getTimes: async (name, tag) => {
+    const res = await client.query(`
+      SELECT opt, time FROM pauses
+      WHERE parent_name = $1 AND parent_tag = $2
+    `, [name, tag]);
+
+    return res.rows;
+  },
+  removeTag: async (name, tag) => {
+    await client.query(`
+      DELETE FROM pauses
+      WHERE parent_name = $1 AND parent_tag = $2
+    `, [name, tag]);
+    await client.query(`
+      DELETE FROM events
+      WHERE name = $1 AND tag = $2
+    `, [name, tag]);
   }
 }

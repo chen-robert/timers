@@ -5,7 +5,7 @@ const bodyParser = require("body-parser");
 const autoprefixer = require('express-autoprefixer');
 const lessMiddleware = require('less-middleware');
 
-const {addTime, addTag, getTags} = require(__dirname + "/db/index.js")
+const {addTime, getTimes, removeTag, addTag, getTags} = require(__dirname + "/db/index.js")
 
 const PORT = process.env.PORT || 3000;
 
@@ -25,8 +25,27 @@ app.get("/api/:name", async (req, res) => {
   res.send(tags);
 });
 
+app.get("/api/:name/:tag", async (req, res) => {
+  const times = await getTimes(req.params.name, req.params.tag);
+
+  res.send(times);
+})
+
+app.delete("/api/:name/:tag", async (req, res) => {
+  await removeTag(req.params.name, req.params.tag);
+
+  res.end();
+});
+
 app.post("/api/:name/:tag", async (req, res) => {
   await addTag(req.params.name, req.params.tag);
+  res.end();
+});
+
+app.post("/api/addTime/:name/:tag", async (req, res) => {
+  const {opt, time} = req.body;
+
+  await addTime(req.params.name, req.params.tag, opt, time);
   res.end();
 });
 
