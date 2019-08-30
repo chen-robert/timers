@@ -2,11 +2,16 @@
   color: white;
   padding: 5px 10px;
   font-size: 12px;
-  font-weight: bold;
+  cursor: pointer;
 }
 
 .btn--delete {
-  background-color: #e83535;
+  background-color: #c03b2b;
+  transition-duration: 250ms;
+  
+  &:hover {
+    background-color: lighten(#c03b2b, 10%);
+  }
 }
 
 body{
@@ -43,6 +48,10 @@ body{
 
 .timer__seperator {
   flex: 1;
+}
+
+.timer__spacer {
+  width: 50px;
 }
 
 .playbtn {

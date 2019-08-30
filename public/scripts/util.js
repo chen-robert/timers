@@ -56,7 +56,6 @@ const init = (name, save) => {
 
   $("#timers").append(`
   <div class="timer" data-tag="${name}">
-    <button class="btn btn--delete" data-tag="${name}">X</button>
     <div class="playbtn-wrapper">
       <button class="playbtn" data-tag="${name}"></button>
     </div>
@@ -66,6 +65,8 @@ const init = (name, save) => {
     <div class="timer__seperator"></div>
     <div class="time" data-tag="${name}">
     </div>
+    <div class="timer__spacer"></div>
+    <div class="btn btn--delete" data-tag="${name}"><i class="material-icons">delete</i></div>
   </div>
   `);
 
