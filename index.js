@@ -52,6 +52,10 @@ app.post("/api/addTime/:name/:tag", async (req, res) => {
 app.get("/:name", (req, res) => res.render("index", {
   username: req.params.name
 }));
+app.get("/render/:name", (req, res) => res.render("render", {
+  username: req.params.name
+}));
+
 app.get("/", (req, res) => res.redirect("/default"));
 
 app.listen(PORT, () => console.log(`Started server at port ${PORT}`));

@@ -14,9 +14,12 @@ const state = {};
 
     const start = new Date();
     start.setHours(0,0,0,0);
+    
     const times = await $.get(`/api/${username}/${tag}?lim=${start.getTime()}`);
 
     times
+      // Implicitly start at midnight
+      .concat({opt: "play", time: start.getTime()})
       .sort((a, b) => a.time - b.time)
       .forEach(({opt, time}) => {
         if(opt === "pause") {
