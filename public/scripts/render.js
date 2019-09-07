@@ -8,6 +8,9 @@ const hash = date => {
 (async () => {
   const username = $("#data").data("username");
   
+  let min = 1e100;
+  let max = 0;
+  
   const data = {};
   const dataByEvent = {};
   const safeAdd = (hash, event, start, end) => {
@@ -54,8 +57,12 @@ const hash = date => {
           currState.hash = hash(time);
           currState.playing = true;
         }
+        min = Math.min(min, time);
+        max = Math.max(max, time);
       });
   }
+  
+  $("#timeline").width((max - min) / (60 * 1000));
   
   google.charts.load('current', {'packages':['timeline']});
   google.charts.setOnLoadCallback(() => {
