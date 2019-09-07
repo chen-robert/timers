@@ -17,7 +17,7 @@ const state = {};
     
     const times = await $.get(`/api/${username}/${tag}?lim=${start.getTime()}`);
 
-    times
+    if(times.length !== 0) times
       // Implicitly start at midnight
       .concat({opt: "play", time: start.getTime()})
       .sort((a, b) => a.time - b.time)
