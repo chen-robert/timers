@@ -5,15 +5,15 @@
   "main": "index.js",
   "dependencies": {
     "body-parser": "^1.19.0",
-    "ejs": "^2.6.2",
+    "ejs": "^3.1.6",
     "express": "^4.17.1",
     "express-autoprefixer": "^5.4.0",
     "less-middleware": "^3.1.0",
-    "npm": "^6.11.2",
-    "pg": "^7.12.1"
+    "npm": "^7.20.3",
+    "pg": "^8.7.1"
   },
   "devDependencies": {
-    "nodemon": "^1.19.1"
+    "nodemon": "^2.0.12"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
